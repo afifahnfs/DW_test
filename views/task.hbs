@@ -1,0 +1,66 @@
+{{>header}}
+{{>navbar}}
+{{>sidebar}}
+
+<main id="main" class="main">
+<div class="card ">
+    <div class="card-body">
+        <h5 class="card-title ">Add Task</h5>
+        <!-- General Form Elements -->
+        <form action="/addTask/{{id}}" method="POST">
+        <div class="row mb-3">
+            <label for="inputText" class="form-label">Input your task</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" name="name">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        </form><!-- End General Form Elements -->
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{tasks.[0].collection}}</h5>
+
+        <!-- Table with stripped rows -->
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each tasks}}
+            <tr>
+                <td>{{this.task}}</td>
+                <td>
+                    <a class="nav-link collapsed" href="#">
+                    <i class="bi ri-ball-pen-line"></i>
+                    <span>Edit</span>
+                    </a>
+                    <a class="nav-link collapsed" href="/deleteTask/{{this.id}}">
+                    <i class="bi bi-trash"></i>
+                    <span>Delete</span>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
+        <div class="row mb-3">
+            <div class="col-sm-10">
+            <a href="/" class="btn btn-danger">Back</a>
+            </div>
+        </div>
+        <!-- End Table with stripped rows -->
+
+    </div>
+</div>
+</main>
+{{>footer}}
